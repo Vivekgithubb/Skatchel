@@ -20,7 +20,7 @@ const HeaderContainer = styled.div`
   /* height: 100px; */
   width: 100%;
   overflow: hidden;
-  box-shadow: 1px 5px 5px grey;
+  box-shadow: 1px 2px 5px grey;
 `;
 const DarkVeil = styled.div`
   position: absolute;

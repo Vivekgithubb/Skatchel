@@ -7,26 +7,33 @@ import axios from "axios";
 import { useAuthContext } from "../authContext/useAuthContext";
 import Loding from "./Loding";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router";
 
 const ProductCard = styled.div`
-  width: 210px;
-  height: 300px;
+  width: 220px;
+  height: 310px;
   display: grid;
-  grid-template-rows: 75% 25%;
-  border-radius: 16px;
-  background-color: #002655ce;
+  grid-template-rows: 80% auto;
+  border-radius: 12px;
+  background-color: #f7f7f7;
+  border: 1px solid lightgray;
   &:hover {
-    box-shadow: 1px 1px 10px #398cf1ed;
-    background-color: #1c1c1c59;
-    transition: 0.2s ease-in-out;
+    box-shadow: 1px 1px 6px #d1e6ffeb;
+    background-color: #263d5f;
+    transition: 0.1s ease-in;
+    color: #ffffff;
   }
 `;
 
 const HeaderSection = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: start;
   align-items: center;
   position: relative;
+  &:hover {
+    color: antiquewhite;
+  }
 
   /* Header styling can be added here */
 `;
@@ -34,43 +41,52 @@ const HeaderSection = styled.div`
 const ProductDetails = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  padding-top: 10px;
+  justify-content: space-evenly;
+  padding-top: 3px;
+  /* margin-top: 1px; */
   font-size: 12px;
   padding-left: 0.3rem;
-  /*padding-right: 1rem; */
+  padding-right: 0.4rem;
   position: relative;
-  border: 1px solid gray;
-  /* gap: 0.5rem; */
+  /* border: 1px solid gray; */
+  gap: 0.1rem;
   height: 100%;
-  background-color: #ffffff;
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
+  border-top: 1px solid #cdcdcd;
+  background-color: #363636;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 `;
 const ProductName = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 100%;
   align-items: center;
   padding-left: 8px;
+  padding-right: 8px;
   /* Product name styling can be added here */
 `;
 
 const ProductPrice = styled.h3`
   /* Product price styling can be added here */
-  padding-left: 8px;
+  color: #5f5f5f;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* padding-left: 1px; */
 `;
 const Div1 = styled.div`
-  background-color: white;
-  /* padding-left: 10px; */
-  /* margin-top: 5px; */
+  /* background-color: white; */
 `;
 const Button = styled.button`
   &:hover {
-    background-color: #2a2a2a;
-    color: white;
+    background-color: #ffffff;
+    color: #000000;
+    transition: 0.2s ease-in;
   }
-  color: black;
+  color: #ffffff;
+  font-family: oxygen;
+  font-weight: 400;
   padding: 3px;
   padding-left: 10px;
   padding-right: 10px;
@@ -83,6 +99,7 @@ function Card({ item, onn, email, setFav }) {
   const { state, dispatch } = useFilter();
   const { user } = useAuthContext();
   const productId = item._id;
+  const navigate = useNavigate();
   const InCart = state.cart.some(
     (Cartitem) =>
       Cartitem && (Cartitem.id === productId || Cartitem._id === productId)
@@ -189,13 +206,24 @@ function Card({ item, onn, email, setFav }) {
 
   return (
     <ProductCard>
-      <HeaderSection>
+      <HeaderSection
+        onClick={() => navigate(`cart/${item.productId?._id || item._id}`)}
+      >
+        <h1 className="w-full  mt-2 mb-4 px-4 wrap-break-word text-[14px] font-normal">
+          {onn ? item.productId?.name : item.name}{" "}
+        </h1>
         <img
           src={onn ? item.productId?.imageUrl : item.imageUrl}
-          className="h-[150px]"
+          className="h-[170px] drop-shadow-white-500/75 "
           alt="image"
         />
-        <div className="relative left-[0px] top-[-90px] overflow-hidden">
+      </HeaderSection>
+      <ProductDetails>
+        <ProductName>
+          {" "}
+          <span className="text-zinc-200 text-[15px]">
+            ₹ {onn ? item.productId?.price : item.price}
+          </span>
           <button>
             {onn ? (
               <FaMinusCircle
@@ -211,22 +239,16 @@ function Card({ item, onn, email, setFav }) {
               />
             )}
           </button>
-        </div>
-      </HeaderSection>
-      <ProductDetails>
-        <ProductName>
-          <h1 className="w-20px">{onn ? item.productId?.name : item.name}</h1>
         </ProductName>
         <ProductPrice>
-          ₹ {onn ? item.productId?.price : item.price}
+          <Div1>
+            {InCart ? (
+              <Button onClick={handleCartremove}>Remove</Button>
+            ) : (
+              <Button onClick={handleCartAdd}>Add To Cart</Button>
+            )}
+          </Div1>
         </ProductPrice>
-        <Div1>
-          {InCart ? (
-            <Button onClick={handleCartremove}>Remove</Button>
-          ) : (
-            <Button onClick={handleCartAdd}>Add To Cart</Button>
-          )}
-        </Div1>
       </ProductDetails>
     </ProductCard>
   );

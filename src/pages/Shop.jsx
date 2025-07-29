@@ -5,12 +5,11 @@ import axios from "axios";
 import Sidebar from "../ui/Sidebar";
 import { useFilter } from "../ui/useFilter";
 import Loding from "../ui/Loding";
-
 import { useAuthContext } from "../authContext/useAuthContext";
 
 const BagGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 2rem;
   width: 100%;
   max-width: 100%;
@@ -18,7 +17,7 @@ const BagGrid = styled.div`
 `;
 
 const BagGridContainer = styled.div`
-  width: 100%;
+  width: 90%;
   height: 80vh;
   overflow-y: auto;
   overflow-x: hidden;
@@ -77,9 +76,10 @@ const SidebarContainer = styled.aside`
 
 const StyledDiv = styled.div`
   display: grid;
-  grid-template-columns: auto 90%;
+  /* width: 90%; */
+  grid-template-columns: auto 95%;
   grid-template-areas: "sidebar  div";
-  gap: 12px;
+  gap: 10px;
 
   @media (min-width: 1500px) {
     display: grid;
@@ -92,7 +92,6 @@ const ScrollWrapper = styled.div`
   /* height: 500px; */
   /* overflow-y: auto; */
   /* position: relative; */
-
   /* Custom Scrollbar */
   &::-webkit-scrollbar {
     width: 8px;
@@ -187,41 +186,44 @@ function Shop() {
             </Select>
           </div>
         </H1>
-        <BagGridContainer>
-          <BagGrid>
-            {onn ? (
-              !fav.items || fav?.items.length === 0 ? (
-                <div className="flex justify-center items-center w-full h-[80vh]">
-                  <h1> No favourites, go on Add some..</h1>
-                </div>
+        <div className="w-full h-full  flex justify-center items-start">
+          {" "}
+          <BagGridContainer>
+            <BagGrid>
+              {onn ? (
+                !fav.items || fav?.items.length === 0 ? (
+                  <div className="flex justify-center items-center w-full h-[80vh]">
+                    <h1> No favourites, go on Add some..</h1>
+                  </div>
+                ) : (
+                  fav?.items
+                    ?.filter((item) => item !== null)
+                    .map((item) => (
+                      <Card
+                        item={item}
+                        key={item._id}
+                        onn={onn}
+                        setFav={setFav}
+                        fav={fav}
+                        email={encodedEmail}
+                        removeLocally={(id) => {
+                          setFav((prev) =>
+                            prev?.filter(
+                              (item) => (item.productId?._id || item._id) !== id
+                            )
+                          );
+                        }}
+                      />
+                    ))
+                )
               ) : (
-                fav?.items
-                  ?.filter((item) => item !== null)
-                  .map((item) => (
-                    <Card
-                      item={item}
-                      key={item._id}
-                      onn={onn}
-                      setFav={setFav}
-                      fav={fav}
-                      email={encodedEmail}
-                      removeLocally={(id) => {
-                        setFav((prev) =>
-                          prev?.filter(
-                            (item) => (item.productId?._id || item._id) !== id
-                          )
-                        );
-                      }}
-                    />
-                  ))
-              )
-            ) : (
-              SortedData.map((item, i) => (
-                <Card item={item} key={item._id} onn={onn} />
-              ))
-            )}
-          </BagGrid>
-        </BagGridContainer>
+                SortedData.map((item) => (
+                  <Card item={item} key={item._id} onn={onn} />
+                ))
+              )}
+            </BagGrid>
+          </BagGridContainer>
+        </div>
       </ScrollWrapper>
     </StyledDiv>
   );

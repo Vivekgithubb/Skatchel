@@ -8,9 +8,22 @@ const productSchema = new mongoose.Schema({
     required: true,
   },
   price: { type: Number, required: true },
-  description: { type: String },
   imageUrl: { type: String },
   stock: { type: Number, default: 0 },
+
+  // Updated and structured description
+  description: {
+    short: { type: String }, // for quick preview cards or lists
+    long: { type: String }, // detailed product overview
+    features: [{ type: String }], // bullet-point features
+    specifications: {
+      material: { type: String },
+      color: { type: String },
+      size: { type: String },
+      weight: { type: String },
+      care: { type: String }, // washing/maintenance instructions
+    },
+  },
 });
 
 const Product = mongoose.model("Product", productSchema);

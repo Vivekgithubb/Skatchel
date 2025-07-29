@@ -33,10 +33,26 @@ function App() {
           <Route path="loding" element={<Loding />} />
           <Route path="shop" element={<Shop />} />
           <Route path="cart/" element={<Cart />} />
-          <Route path="cart/:id" element={<CartData />} />
+          <Route path="shop/cart/:id" element={<CartData />} />
         </Route>
       </Routes>
-      <Toaster position="top-center" toastOptions={{ duration: 3000 }} />
+      <Toaster
+        position="top-center"
+        toastOptions={{
+          duration: 2000,
+
+          style: {
+            fontFamily: "figtree",
+            fontSize: "10px",
+          },
+
+          error: {
+            style: {
+              background: "red",
+            },
+          },
+        }}
+      />
     </BrowserRouter>
   );
 }

@@ -59,7 +59,7 @@ function Sidebar() {
   const { dispatch } = useFilter();
   // const [isactiveSort, setActiveSort] = useState("recommended");
   return (
-    <div className="w-full bg-white h-full border-r-2 overflow-hidden border-zinc-500 shadow-xl/30 ">
+    <div className="w-full bg-white h-full border-r-2 overflow-hidden border-zinc-500 s ">
       <FilterDiv>
         <h1 className="text-[15px] font-semibold font-figtree">Filters</h1>
         <div className="text-[10px] border-grey flex flex-col items-start w-[80%] rounded-lg ">
