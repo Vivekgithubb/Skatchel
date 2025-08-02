@@ -5,6 +5,7 @@ import axios from "axios";
 import { useAuthContext } from "../authContext/useAuthContext";
 import React, { useEffect, useState } from "react";
 import Typewriter from "typewriter-effect";
+import toast from "react-hot-toast";
 
 const StyledForm = styled.div`
   display: flex;
@@ -123,7 +124,8 @@ function Login() {
         navigate("/landing");
       }
     } catch (err) {
-      alert(err.response?.data?.error || "Login Failed");
+      console.log(err.message);
+      toast.error("Inavlid Credentials");
     }
   };
 

@@ -44,7 +44,7 @@ function FinalCartItems({ item, fetchCart }) {
           withCredentials: true,
         }
       );
-      toast.success("ADding to Cart");
+      toast.success("Adding to Cart");
       dispatch({ type: "AddToCart", payload: item._id });
       fetchCart();
     } catch (err) {
@@ -76,7 +76,7 @@ function FinalCartItems({ item, fetchCart }) {
       {/* <button onClick={fetchCart}>Click</button> */}
       <div>
         <StyledImg src={item.productId.imageUrl} />
-        <h1>{item.productId.name}</h1>
+        <h1 className="mt-2">{item.productId.name}</h1>
       </div>
       <div className="flex flex-col justify-center items-center gap-5  ">
         <Styledh1>₹ {item.price}</Styledh1>

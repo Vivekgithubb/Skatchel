@@ -11,6 +11,7 @@ import ProtectedRoute from "./pages/ProtectedRoute";
 import Loding from "./ui/Loding";
 import { Toaster } from "react-hot-toast";
 import Landing from "./pages/landing";
+import Checkout from "./pages/Checkout";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path="shop" element={<Shop />} />
           <Route path="cart/" element={<Cart />} />
           <Route path="shop/cart/:id" element={<CartData />} />
+          <Route path="cart/checkout" element={<Checkout />} />
         </Route>
       </Routes>
       <Toaster

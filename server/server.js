@@ -7,6 +7,9 @@ import cookieParser from "cookie-parser";
 import CartData from "./routes/CartData.js";
 import userData from "./routes/userData.js";
 import Fav from "./routes/Fav.js";
+import placeOrder from "./routes/placeOrder.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 app.use(express.json());
@@ -29,6 +32,8 @@ app.use("/api/user", userData);
 app.use("/api/products", getData);
 app.use("/api/cart", CartData);
 app.use("/api/fav", Fav);
+
+app.use("/api/order", placeOrder);
 
 app.listen(5000, () => {
   console.log(`Server running`);

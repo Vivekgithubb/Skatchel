@@ -32,7 +32,7 @@ const HeaderSection = styled.div`
   align-items: center;
   position: relative;
   &:hover {
-    color: antiquewhite;
+    color: #ffffff;
   }
 
   /* Header styling can be added here */
@@ -52,7 +52,7 @@ const ProductDetails = styled.div`
   gap: 0.1rem;
   height: 100%;
   border-top: 1px solid #cdcdcd;
-  background-color: #363636;
+  background-color: #000000d1;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 `;
@@ -221,7 +221,7 @@ function Card({ item, onn, email, setFav }) {
       <ProductDetails>
         <ProductName>
           {" "}
-          <span className="text-zinc-200 text-[15px]">
+          <span className="text-zinc-100 text-[15px]">
             ₹ {onn ? item.productId?.price : item.price}
           </span>
           <button>

@@ -46,7 +46,7 @@ const H1 = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-  font-family: marcellus;
+  font-family: figtree;
 `;
 
 const Button = styled.button`

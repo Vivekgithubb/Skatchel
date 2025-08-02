@@ -49,7 +49,7 @@ function Cart() {
   const { user } = useAuthContext();
   const email = user.email;
   const navigate = useNavigate();
-  // const [items, setItems] = useState([]);
+
   const { state, dispatch } = useFilter();
   const [cart, setCart] = useState([]);
 
@@ -67,21 +67,10 @@ function Cart() {
   useEffect(() => {
     fetchCart();
   }, [fetchCart]);
-  useEffect(() => {
-    if (!email) return <Loding />;
-    axios
-      .get(`http://localhost:5000/api/cart/users/${email}`, {
-        withCredentials: true,
-      })
-      // .then((res) => {
-      //   console.log(res.data);
-      //   setItems(res.data[0].items);
-      // })
-      .catch((err) => console.log(err.message));
-  }, [email]);
 
   useEffect(() => {
     const total = cart.reduce((acc, cur) => acc + cur.price * cur.quantity, 0);
+    console.log("Dispatching bill:", total);
     dispatch({ type: "SetTotalBill", payload: total });
   }, [cart, dispatch]);
 

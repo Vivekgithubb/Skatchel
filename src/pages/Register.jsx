@@ -23,8 +23,9 @@ const StyledDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 0px;
   width: 36vw;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   padding-top: 20px;
   box-shadow: 1px 1px 3px grey;
   /* background-color: #e0edf9; */
@@ -85,7 +86,7 @@ function Register() {
     <StyledForm>
       <h1 className="font-oxygen text-3xl">Create Your Account</h1>
       <StyledDiv>
-        <form className="flex flex-col p-10 " onSubmit={handleSubmit}>
+        <form className="flex flex-col p-0 " onSubmit={handleSubmit}>
           <Styledlabel htmlFor="name">Name</Styledlabel>
           <StyledInput
             type="text"
@@ -135,7 +136,7 @@ function Register() {
           </div>
         </form>
 
-        <a href="/login" className="text-xs">
+        <a href="/login" className="text-xs mt-0">
           Already have an account? <span className="italic">Login</span>
         </a>
       </StyledDiv>

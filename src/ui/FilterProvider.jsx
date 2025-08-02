@@ -17,6 +17,9 @@ function FilterReducer(state, action) {
       };
     case "SetTotalBill":
       return { ...state, bill: action.payload };
+    case "ClearCart":
+      return { ...state, cart: [] };
+
     default:
       return state;
   }

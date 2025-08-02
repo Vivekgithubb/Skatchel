@@ -83,7 +83,7 @@ const GridMotion = ({ items = [], gradientColor = "black" }) => {
                           style={{ backgroundImage: `url(${content})` }}
                         ></div>
                       ) : (
-                        <div className="p-4 text-center z-[1]">{content}</div>
+                        <div className="p-6 text-center z-[1]">{content}</div>
                       )}
                     </div>
                   </div>

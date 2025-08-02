@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import styled from "styled-components";
 
 const StyledBill = styled.div`
@@ -8,10 +9,10 @@ const StyledBill = styled.div`
   padding: 10px 0;
   font-family: figtree;
   border: 1px solid grey;
-  margin-right: 18px;
+  margin-right: 10px;
   border-radius: 10px;
-  padding-left: 10px;
-  background-color: #fbf5f3;
+  padding-left: 9px;
+  background-color: #f3f3f3;
 `;
 
 const BillLabel = styled.div`
@@ -53,6 +54,11 @@ const CheckoutButton = styled.button`
   }
 `;
 function FinalBill({ total }) {
+  const navigate = useNavigate();
+  function handleClick() {
+    console.log(total);
+    navigate("/cart/checkout");
+  }
   return (
     <StyledBill>
       <div className="flex justify-start items-center gap-4">
@@ -63,7 +69,7 @@ function FinalBill({ total }) {
       <BillRight>
         <p>Shipping: ₹0.00</p>
         <p>Platform Fee: ₹0.00</p>
-        <CheckoutButton>CheckOut</CheckoutButton>
+        <CheckoutButton onClick={handleClick}>CheckOut</CheckoutButton>
       </BillRight>
     </StyledBill>
   );
