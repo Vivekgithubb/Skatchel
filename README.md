@@ -1,12 +1,76 @@
-# React + Vite
+# 🛍 Skatchel – Modern MERN‑Stack E‑Commerce Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Skatchel is a **full‑featured, modern e‑commerce application** built with the **MERN stack**  
+(**MongoDB, Express.js, React.js, Node.js**).  
+It delivers a fast, responsive, and intuitive shopping experience from browsing to checkout.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
+- ** 🛒 Core E‑Commerce
+  - **Product Catalog** – Bags, Pants, Shirts with images, specs, and stock info
+  - **Category Filtering** – Instant filter by product type
+  - **Favorites** – Save/remove products for later
+  - **Shopping Cart** – Add/remove items with live bill calculation
 
-## Expanding the ESLint configuration
+- **🔐 Authentication & Authorization
+  - **User Accounts** – Secure sign‑up & login using JWT authentication
+  - Ability to change user data and password with real time verification and visibility
+  - **Session Handling** – Persistent user sessions across visits
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **📦 Product Catalog**
+  - Bags, Pants, Shirts
+  - Detailed descriptions, specifications, and stock info
+  - High‑quality product images
+
+- **🔍 Category Filtering**
+  - Filter products by type instantly
+
+- **❤️ Favorites**
+  - Save/remove products from favorites in any view
+  - Persistent favorite state
+
+- **🛒 Shopping Cart**
+  - Add/remove items
+  - Manage favorites, Linked via account
+  - Real‑time bill calculation
+  - Real time cart Addition and data handling 
+
+- **⚡ Instant Feedback**
+  - Toast notifications for cart and favorite actions
+
+- **🎨 Styled Components**
+  - Modular, reusable component styling
+
+- **🔗 Navigation**
+  - React Router for smooth, no‑reload navigation
+
+- **🌐 API Integration**
+  - Axios to connect to Express API endpoints
+
+- **🛠 State Management**
+  - Context API (`useFilter`) + useReducer
+
+---
+
+## 🛠 Tech Stack
+
+**Frontend**
+- React.js
+- React Router
+- Styled Components
+- Axios
+- React Toastify
+- -React bits
+
+**Backend**
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose (ODM)
+
+**State Management**
+- Context API + useReducer
+
+---
+
